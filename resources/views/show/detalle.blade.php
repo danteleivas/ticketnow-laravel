@@ -39,6 +39,7 @@
         
 
         const mp = new MercadoPago('{{ env('MERCADO_PAGO_PUBLIC_KEY') }}');
+        
 
         const bricksBuilder = mp.bricks();
 

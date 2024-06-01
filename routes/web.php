@@ -31,7 +31,7 @@ Route::post('/register', [RegisterUserController::class, 'store'])->name('regist
 Route::get('/show/{id}', [ShowController::class, 'mostrar'])->name('show');
 
 Route::get('/detalle', [CompraController::class, 'detalle'])->name('detalle')->middleware(['auth', 'noAdmin']);
-Route::post('/detalle', [CompraController::class, 'detalle'])->name('detalle')->middleware(['auth', 'noAdmin']);
+Route::post('/detalle', [CompraController::class, 'detalle'])->name('detallePost')->middleware(['auth', 'noAdmin']);
 
 
 Route::get('/exito', [CompraController::class, 'exito'])->name('exito')->middleware(['auth', 'noAdmin']);;
