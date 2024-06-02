@@ -19,18 +19,16 @@
             @else
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     @foreach ($entradas as $entrada)
-                        <div class="bg-white shadow-md rounded-lg p-4">
-                            <p class="font-semibold">Evento: {{ $entrada->show->artista }}</p>
-                            <p><span class="font-semibold">Fecha:</span> {{ $entrada->show->fecha }}</p>
-                            <p><span class="font-semibold">Hora:</span> {{ $entrada->show->hora }}</p>
-                            <p><span class="font-semibold">Lugar:</span> {{ $entrada->show->place->nombre }}</p>
-                            <p><span class="font-semibold">Sector:</span> {{  strtoupper($entrada->sector) }}</p>
-                            <p><span class="font-semibold">Código QR:</span> {{ $entrada->codigo_qr }}</p>
-                            <div>{!! QrCode::size(100)->generate($entrada->codigo_qr) !!}</div>
-                            <img src="{{$entrada->qr_ruta}}" alt="">
-        
-                            
-                        </div>
+                    <div class="bg-white shadow-md rounded-lg p-4">
+                        <p class="font-semibold">Evento: {{ $entrada->show->artista }}</p>
+                        <p><span class="font-semibold">Fecha:</span> {{ \Carbon\Carbon::parse($entrada->show->fecha)->translatedFormat('j \\de F \\de Y') }}</p>
+                        <p><span class="font-semibold">Hora:</span> {{ \Carbon\Carbon::parse($entrada->show->hora)->format('H:i') }} hs</p>
+                        <p><span class="font-semibold">Lugar:</span> {{ $entrada->show->place->nombre }}</p>
+                        <p><span class="font-semibold">Sector:</span> {{ strtoupper($entrada->sector) }}</p>
+                        <p><span class="font-semibold">Código QR:</span> {{ $entrada->codigo_qr }}</p>
+                        <div>{!! QrCode::size(100)->generate($entrada->codigo_qr) !!}</div>
+                        <img src="{{ $entrada->qr_ruta }}" alt="">
+                    </div>      
                     @endforeach
                 </div>
             @endif

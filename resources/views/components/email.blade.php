@@ -14,20 +14,15 @@
 
         <ul class="grid grid-cols-1 gap-4">
             @foreach ($data['entradas'] as $entrada)
-                <li class="bg-white shadow-md rounded-lg p-4">
-                    <p class="font-semibold">Evento: {{ $entrada->show->artista }}</p>
-                    <p>Fecha: {{ $entrada->show->fecha }}</p>
-                    <p>Hora: {{ $entrada->show->hora }}</p>
-                    <p>Lugar: {{ $entrada->show->place->nombre }}</p>
-                    <p>Sector: {{ strtoupper($entrada->sector) }}</p>
-                    <p>Código QR: {{ $entrada->codigo_qr }}</p>
-
-                    <img src="{!! $message->embedData(Storage::get($entrada->qr_ruta), 'qr.png', 'image/png') !!}" alt="QR">
-
-
-
-
-                </li>
+            <li class="bg-white shadow-md rounded-lg p-4">
+                <p class="font-semibold">Evento: {{ $entrada->show->artista }}</p>
+                <p>Fecha: {{ \Carbon\Carbon::parse($entrada->show->fecha)->translatedFormat('j \\de F \\de Y') }}</p>
+                <p>Hora: {{ \Carbon\Carbon::parse($entrada->show->hora)->format('H:i') }} hs</p>
+                <p>Lugar: {{ $entrada->show->place->nombre }}</p>
+                <p>Sector: {{ strtoupper($entrada->sector) }}</p>
+                <p>Código QR: {{ $entrada->codigo_qr }}</p>
+                <img src="{!! $message->embedData(Storage::get($entrada->qr_ruta), 'qr.png', 'image/png') !!}" alt="QR">
+            </li>
             @endforeach
         </ul>
 

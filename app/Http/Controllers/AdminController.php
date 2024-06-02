@@ -59,6 +59,7 @@ class AdminController extends Controller
             $show->imagen = $pathFile . $imagenNombre;
 
             $show->save();
+            
 
             return back()->with('successShow', 'Has agregado el evento correctamente!');
         }

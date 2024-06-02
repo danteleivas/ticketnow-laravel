@@ -12,7 +12,8 @@
             
             <h2 class="text-3xl font-bold mb-4 mt-16">{{ $show->artista }}</h2>
 
-            <p class="text-lg mb-4">Fecha: {{ $show->fecha }}</p>
+            <p class="text-lg mb-4">Fecha: {{ \Carbon\Carbon::parse($show->fecha)->translatedFormat('j \\de F \\de Y') }}</p>
+            <p class="text-lg mb-4">Hora: {{ \Carbon\Carbon::parse($show->hora)->format('H:i') }} hs</p>
             <p class="text-lg mb-4">Lugar: {{ $place->nombre }}</p>
             <p class="text-lg mb-4">Direccion: {{ $place->direccion }}</p>
 

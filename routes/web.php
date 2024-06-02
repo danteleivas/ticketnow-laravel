@@ -8,7 +8,9 @@ use App\Http\Controllers\MercadoPagoController;
 use App\Http\Controllers\MiCuentaController;
 use App\Http\Controllers\RegisterUserController;
 use App\Http\Controllers\ShowController;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/buscar', [HomeController::class, 'buscar'])->name('buscar');
@@ -39,7 +41,9 @@ Route::get('/exito', [CompraController::class, 'exito'])->name('exito')->middlew
 Route::get('/micuenta', [MiCuentaController::class, 'micuenta'])->name('micuenta')->middleware(['auth', 'noAdmin']);;
 
 
-
+if(App::environment('production')){
+    URL::forceScheme('https');
+}
 
 
 

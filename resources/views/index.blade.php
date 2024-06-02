@@ -38,7 +38,7 @@
                     <img src="{{$show->imagen}}" alt="Evento 1" class="w-full h-full object-cover">
                     <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition duration-300">
                         <div class="text-white text-center p-4">
-                            <p >Fecha: {{$show->fecha}}</p>
+                            <p >Fecha: {{ \Carbon\Carbon::parse($show->fecha)->translatedFormat('j \\de F \\de Y') }}</p>
                             <p >Lugar: {{ DB::table('places')->where('id', $show->place_id)->value('nombre') }}</p>
                         </div>
                         
