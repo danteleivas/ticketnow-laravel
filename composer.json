@@ -9,7 +9,8 @@
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.9",
         "mercadopago/dx-php": "^3.0",
-        "simplesoftwareio/simple-qrcode": "^4.2"
+        "simplesoftwareio/simple-qrcode": "^4.2",
+        "ext-imagick": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
